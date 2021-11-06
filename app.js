@@ -6,6 +6,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const path = require('path');
 var cors = require('cors');
+const compression = require('compression');
 
 const rateLimit = require('express-rate-limit');
 const AppError = require('./utils/appError');
@@ -92,6 +93,8 @@ app.use(
     ],
   })
 );
+
+app.use(compression());
 
 // Test middleware
 app.use((req, res, next) => {
